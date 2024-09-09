@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function App() {
+  const [amount, setAmount] = useState("20.00");
+
   return (
     <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
       <div className="App">
-        <h1>Pay with PayPal</h1>
+        <h1>Pay with PayPal or Venmo</h1>
+        
+        {/* Input field for amount */}
+        <input
+          type="text"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Amount"
+        />
+
+        {/* PayPal Button */}
         <PayPalButtons
-          style={{ layout: 'vertical' }}
+          style={{ layout: "vertical" }}
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [
                 {
                   amount: {
-                    value: "20.00",  // Fixed amount for now
+                    value: amount, // Ensure the amount is passed correctly
                   },
                 },
               ],
