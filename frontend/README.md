@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+NECYPAA Preregistration Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend of the NECYPAA Preregistration Competition App, built using React. It provides a form for users to preregister for the NECYPAA event and integrates PayPal for payment processing. The app is also a Progressive Web App (PWA), meaning it supports offline functionality and can be installed on mobile devices.
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+Preregistration Form: Users can fill in their details (name, email, phone, etc.) and submit their preregistration.
+PayPal Integration: Payment processing via PayPal.
+PWA Support: Offline access and installation on mobile devices.
+Responsive Design: Optimized for both mobile and desktop devices.
+Technologies
 
-### `npm start`
+React for building the user interface.
+PayPal API for payment integration.
+Service Workers for PWA offline functionality.
+Material-UI for styling the components.
+Setup and Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Prerequisites Make sure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node.js: Download from https://nodejs.org.
+Steps to Set Up
 
-### `npm test`
+Navigate to the frontend directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+cd frontend
+Install dependencies:
 
-### `npm run build`
+Copy code
+npm install
+Start the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+sql
+Copy code
+npm start
+This will run the app locally on http://localhost:3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Build for production: If you want to create an optimized production build:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+arduino
+Copy code
+npm run build
+Serve the production build: To test the production build locally:
 
-### `npm run eject`
+Copy code
+npm install -g serve
+serve -s build
+PWA Setup:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app supports Progressive Web App functionality.
+After running the production build, open the app on a mobile device to see the "Add to Home Screen" option.
+PWA Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app supports offline usage via service workers.
+Users can install the app on their devices and use it like a native mobile app.
+Environment Variables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To enable PayPal payments, you need to set your PayPal client ID in an environment variable:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+makefile
+Copy code
+REACT_APP_PAYPAL_CLIENT_ID=your-client-id
+Folder Structure
 
-## Learn More
+src/: The main source code for the frontend, including components and service worker.
+public/: Static files like icons, index.html, and the PWA manifest.
+Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Build the production files using npm run build.
+Deploy the contents of the build/ folder to your preferred hosting provider (e.g., Netlify, AWS, or GitHub Pages).
+License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License.
