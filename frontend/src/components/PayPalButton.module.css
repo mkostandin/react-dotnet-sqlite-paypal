@@ -1,0 +1,16 @@
+.paypalButtonContainer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  button {
+    background-color: #0070ba;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #005c8a;
+  }  
