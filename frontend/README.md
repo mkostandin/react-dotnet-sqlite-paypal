@@ -72,4 +72,4 @@ Build the production files using npm run build.
 Deploy the contents of the build/ folder to your preferred hosting provider (e.g., Netlify, AWS, or GitHub Pages).
 License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU License.
