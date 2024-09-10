@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { TextField, Checkbox, Typography, FormControlLabel, Button } from "@mui/material";
+import './App.css'; // Make sure this imports your updated CSS
 
 function App() {
-  // State for the form
   const [formData, setFormData] = useState({
     name: "",
     cityStateCommittee: "",
@@ -19,10 +19,8 @@ function App() {
     amount: "20.00",
   });
 
-  // State for errors
   const [errors, setErrors] = useState({});
 
-  // Handle changes for text inputs
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -30,7 +28,6 @@ function App() {
     });
   };
 
-  // Handle changes for checkboxes
   const handleCheckboxChange = (e) => {
     setFormData({
       ...formData,
@@ -41,7 +38,6 @@ function App() {
     });
   };
 
-  // Form validation logic
   const validateForm = () => {
     let formErrors = {};
 
@@ -54,7 +50,6 @@ function App() {
     return Object.keys(formErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
@@ -67,11 +62,12 @@ function App() {
   return (
     <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
       <div className="App">
-        <Typography variant="h4" align="center" gutterBottom>
-          NECYPAA Preregistration Competition
+        {/* Title and Description */}
+        <Typography variant="h5" align="center" gutterBottom>
+          Help Us Bring NECYPAA to the Granite State!
         </Typography>
-        <Typography variant="subtitle1" align="center" gutterBottom>
-          Sign up to participate in the NECYPAA convention competition. Fill out the form below to preregister and support your committee!
+        <Typography variant="body1" align="center" gutterBottom>
+          Preregister now for NECYPAA, happening in Vermont from January 3rd to 5th, 2025! By preregistering through the NH Bid, you'll help us compete to win better seats for the 2025 conference and bring NECYPAA to New Hampshire in 2026. Your support makes a difference—join our bid and be part of something bigger!
         </Typography>
 
         {/* Form */}
@@ -188,7 +184,6 @@ function App() {
           onApprove={(data, actions) => {
             return actions.order.capture().then((details) => {
               alert(`Transaction completed by ${details.payer.name.given_name}`);
-              // Here you could send the formData to your backend
             });
           }}
         />
