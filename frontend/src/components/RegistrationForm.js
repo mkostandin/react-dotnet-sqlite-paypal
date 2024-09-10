@@ -55,7 +55,7 @@ const RegistrationForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.formContainer}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <TextField
         label="Name (first and last)*"
         name="name"
@@ -152,7 +152,7 @@ const RegistrationForm = ({ onSubmit }) => {
         variant="contained"
         color="primary"
         type="submit"
-        fullWidth={false} // Ensure it's not taking full width
+        fullWidth={false} // Make sure fullWidth is false to respect CSS width
       >
         Submit
       </Button>
