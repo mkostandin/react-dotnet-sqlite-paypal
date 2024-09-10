@@ -7,6 +7,7 @@ const PayPalButton = ({ amount }) => {
     <div className={styles.paypalButtonContainer}>
       <PayPalButtons
         style={{ layout: "vertical" }}
+        fundingSource={undefined} /* This allows all funding sources like Venmo to be enabled */
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [
@@ -22,6 +23,9 @@ const PayPalButton = ({ amount }) => {
           return actions.order.capture().then((details) => {
             alert(`Transaction completed by ${details.payer.name.given_name}`);
           });
+        }}
+        funding={{
+          disallowed: [window?.paypal?.FUNDING?.PAYLATER], // Safely disallow Pay Later
         }}
       />
     </div>
