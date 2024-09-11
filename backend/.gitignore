@@ -1,0 +1,54 @@
+# .NET build
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+Generated\
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider settings
+.idea/
+.idea/*
+
+# JetBrains Rider
+*.sln.iml
+*.sln.ide.local
+# Rider logs and caches
+**/.idea/workspace.xml
+**/.idea/caches/
+
+# NuGet Packages
+*.nupkg
+packages/
+.nuget/
+
+# DotNet CLI
+dotnet-tools.json
+
+# Entity Framework Core
+Migrations/
+
+# Backup files
+*.bak
+*.swp
+*~.ncr
+
+# Environment variables
+.env

@@ -1,0 +1,26 @@
+@backend_HostAddress = http://localhost:5192
+
+### Get all registrations
+GET {{backend_HostAddress}}/api/registrations
+Accept: application/json
+
+###
+
+### Add a new registration
+POST {{backend_HostAddress}}/api/registrations
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Alice Smith",
+  "email": "alice.smith@example.com",
+  "paymentMethod": "Venmo"
+}
+
+###
+
+### Get weather forecast (if needed for testing)
+GET {{backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

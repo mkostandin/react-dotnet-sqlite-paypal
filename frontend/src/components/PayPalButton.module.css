@@ -1,10 +1,6 @@
-/* PayPal Button Container Styling */
 .paypalButtonContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px; /* Optional: Add some space at the top */
-    width: 100%; /* Ensure it takes up full width */
+    margin-top: 20px;
+    text-align: center;
   }
   
   button {

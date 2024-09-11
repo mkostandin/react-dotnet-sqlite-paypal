@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Checkbox, Typography, FormControlLabel, Button } from "@mui/material";
-import styles from './RegistrationForm.module.css'; // Import the CSS module
+import { TextField, Checkbox, FormControlLabel, Button } from "@mui/material";
+import styles from './RegistrationForm.module.css'; // Import CSS Module
 
 const RegistrationForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -38,6 +38,7 @@ const RegistrationForm = ({ onSubmit }) => {
 
   const validateForm = () => {
     let formErrors = {};
+
     if (!formData.name.trim()) formErrors.name = "Name is required";
     if (!formData.cityStateCommittee.trim()) formErrors.cityStateCommittee = "City/State/Committee is required";
     if (!formData.phone.trim()) formErrors.phone = "Phone number is required";
@@ -50,7 +51,9 @@ const RegistrationForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      onSubmit(formData); // Call the passed-in onSubmit function with form data
+      onSubmit(formData); // Pass formData back to parent component
+    } else {
+      console.log("Form has errors, do not proceed");
     }
   };
 
@@ -113,9 +116,6 @@ const RegistrationForm = ({ onSubmit }) => {
         margin="normal"
       />
 
-      <Typography variant="h6" gutterBottom className={styles.checkboxLabel}>
-        Would you like to be of service?
-      </Typography>
       <FormControlLabel
         control={
           <Checkbox
@@ -147,13 +147,7 @@ const RegistrationForm = ({ onSubmit }) => {
         label="No thank you"
       />
 
-      <Button
-        className={styles.submitButton}
-        variant="contained"
-        color="primary"
-        type="submit"
-        fullWidth={false} // Make sure fullWidth is false to respect CSS width
-      >
+      <Button variant="contained" color="primary" type="submit" fullWidth>
         Submit
       </Button>
     </form>
