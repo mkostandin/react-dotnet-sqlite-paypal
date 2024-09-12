@@ -12,21 +12,14 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "John Doe",
-  "cityStateCommittee": "Boston, MA / NECYPAA Committee",
-  "phoneNumber": "123-456-7890",
-  "email": "johndoe@example.com",
-  "sobrietyDate": "2020-05-15T00:00:00",
-  "accessibilityNeeds": "Wheelchair access",
-  "isPanelSpeaker": true,
-  "isVolunteer": false,
-  "isNoService": false,
-  "paymentMethod": "PayPal"
+    "name": "John Doe",
+    "cityStateCommittee": "Boston, MA / NECYPAA Committee",
+    "phoneNumber": "123-456-7890",
+    "email": "johndoe@example.com",
+    "sobrietyDate": "2020-05-15T00:00:00",
+    "accessibilityNeeds": "Wheelchair access",
+    "isPanelSpeaker": true,
+    "isVolunteer": false,
+    "paymentMethod": "PayPal",
+    "transactionId": "PAY1234567890"
 }
-
-###
-
-### Get weather forecast (if needed for testing)
-GET {{backend_HostAddress}}/weatherforecast/
-Accept: application/json
-
