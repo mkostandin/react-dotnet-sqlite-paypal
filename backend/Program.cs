@@ -1,18 +1,22 @@
-using DotNetEnv;
+using Amazon.Extensions.NETCore.Setup;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Load environment variables from the .env file
-Env.Load();
+// Load AWS Options from appsettings or environment
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllers();
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Configure PostgreSQL as the database provider
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
+// Add Swagger for API documentation (optional)
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(); // Optional if you want to use Swagger for API documentation
+builder.Services.AddSwaggerGen();
 
 // Add CORS configuration
 builder.Services.AddCors(options =>
@@ -27,7 +31,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Enable middleware to serve generated Swagger as a JSON endpoint (optional)
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -35,14 +38,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Use CORS
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// Serve the React frontend as fallback
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.MapFallbackToFile("index.html");

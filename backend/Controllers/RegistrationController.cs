@@ -15,9 +15,13 @@ public class RegistrationsController : ControllerBase
 
     public RegistrationsController(DataContext context)
     {
-        _context = context;
-        sendGridApiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY"); // Load from .env
-        fromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL"); // Load from .env
+        _context = context ?? throw new ArgumentNullException(nameof(context));
+
+        sendGridApiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY") 
+                         ?? throw new ArgumentNullException(nameof(sendGridApiKey));
+
+        fromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL") 
+                    ?? throw new ArgumentNullException(nameof(fromEmail));
     }
 
     // GET: api/registrations
