@@ -16,7 +16,7 @@ Accept: application/json
     "cityStateCommittee": "Boston, MA / NECYPAA Committee",
     "phoneNumber": "123-456-7890",
     "email": "johndoe@example.com",
-    "sobrietyDate": "2020-05-15T00:00:00",
+    "sobrietyDate": "May 15, 2020",
     "accessibilityNeeds": "Wheelchair access",
     "isPanelSpeaker": true,
     "isVolunteer": false,

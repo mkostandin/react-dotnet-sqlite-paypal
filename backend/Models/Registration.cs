@@ -6,7 +6,8 @@ public class Registration
     public required string CityStateCommittee { get; set; }
     public required string PhoneNumber { get; set; }
     public required string Email { get; set; }
-    public DateTime SobrietyDate { get; set; }
+
+    public string? SobrietyDate { get; set; }  // Changed from DateTime to string and made nullable
 
     public string? AccessibilityNeeds { get; set; } // Nullable, if optional
     public bool IsPanelSpeaker { get; set; }

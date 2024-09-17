@@ -1,3 +1,5 @@
+using Amazon.SimpleSystemsManagement;
+using Amazon.SimpleSystemsManagement.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SendGrid;
@@ -17,10 +19,10 @@ public class RegistrationsController : ControllerBase
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
 
-        sendGridApiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY") 
+        var ssmClient = new AmazonSimpleSystemsManagementClient();
+        sendGridApiKey = GetParameterValueAsync(ssmClient, "/necypaa/SendGrid/ApiKey").Result
                          ?? throw new ArgumentNullException(nameof(sendGridApiKey));
-
-        fromEmail = Environment.GetEnvironmentVariable("FROM_EMAIL") 
+        fromEmail = GetParameterValueAsync(ssmClient, "/necypaa/SendGrid/Email").Result
                     ?? throw new ArgumentNullException(nameof(fromEmail));
     }
 
@@ -37,7 +39,7 @@ public class RegistrationsController : ControllerBase
     {
         if (ModelState.IsValid)
         {
-            registration.DateRegistered = DateTime.Now;
+            registration.DateRegistered = DateTime.UtcNow;
 
             // Save registration in the database
             _context.Registrations.Add(registration);
@@ -62,7 +64,7 @@ public class RegistrationsController : ControllerBase
                                "Thank you for registering. Here are the details of your registration:\n" +
                                $"City/State/Committee: {registration.CityStateCommittee}\n" +
                                $"Phone Number: {registration.PhoneNumber}\n" +
-                               $"Sobriety Date: {registration.SobrietyDate.ToShortDateString()}\n" +
+                               $"Sobriety Date: {registration.SobrietyDate}\n" +  // Fixed here
                                $"Accessibility Needs: {registration.AccessibilityNeeds}\n" +
                                $"Panel Speaker: {registration.IsPanelSpeaker}\n" +
                                $"Volunteer: {registration.IsVolunteer}\n" +
@@ -72,7 +74,7 @@ public class RegistrationsController : ControllerBase
                           "<p>Thank you for registering. Here are the details of your registration:</p>" +
                           $"<ul><li>City/State/Committee: {registration.CityStateCommittee}</li>" +
                           $"<li>Phone Number: {registration.PhoneNumber}</li>" +
-                          $"<li>Sobriety Date: {registration.SobrietyDate.ToShortDateString()}</li>" +
+                          $"<li>Sobriety Date: {registration.SobrietyDate}</li>" +  // Fixed here
                           $"<li>Accessibility Needs: {registration.AccessibilityNeeds}</li>" +
                           $"<li>Panel Speaker: {registration.IsPanelSpeaker}</li>" +
                           $"<li>Volunteer: {registration.IsVolunteer}</li>" +
@@ -80,7 +82,18 @@ public class RegistrationsController : ControllerBase
                           "<p>Best regards,<br>Your Organization</p>";
         var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
         var response = await client.SendEmailAsync(msg);
+    }
 
-        // Optionally check the response for logging or error handling
+    // Helper method to get the parameter value from Parameter Store
+    private async Task<string> GetParameterValueAsync(IAmazonSimpleSystemsManagement ssmClient, string parameterName)
+    {
+        var request = new GetParameterRequest
+        {
+            Name = parameterName,
+            WithDecryption = true // Set this to true to retrieve encrypted values like the password
+        };
+
+        var response = await ssmClient.GetParameterAsync(request);
+        return response.Parameter.Value;
     }
 }
