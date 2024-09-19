@@ -1,10 +1,19 @@
+// src/components/PayPalButton.js
 import React from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
-import styles from './PayPalButton.module.css'; // Import CSS Module
+import { Box } from '@mui/material';
 
 const PayPalButton = ({ amount }) => {
   return (
-    <div className={styles.paypalButtonContainer}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '20px',
+        width: '100%',
+      }}
+    >
       <PayPalButtons
         style={{ layout: "vertical" }}
         fundingSource={undefined} /* This allows all funding sources like Venmo to be enabled */
@@ -28,7 +37,7 @@ const PayPalButton = ({ amount }) => {
           disallowed: [window?.paypal?.FUNDING?.PAYLATER], // Safely disallow Pay Later
         }}
       />
-    </div>
+    </Box>
   );
 };
 

@@ -1,8 +1,9 @@
+// App.js (relevant parts)
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import React from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import RegistrationForm from './components/RegistrationForm';
-import AdminPanel from './components/AdminPanel'; // Import AdminPanel component
+import AdminPanel from './components/AdminPanel';
 import { Typography, Button } from "@mui/material";
 import './App.css';
 
@@ -15,7 +16,7 @@ function App() {
     <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
       <Router>
         <div className="App">
-          <Routes> {/* Replace Switch with Routes */}
+          <Routes>
             {/* Route for the registration form */}
             <Route path="/" element={
               <>
