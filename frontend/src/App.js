@@ -12,7 +12,7 @@ function App() {
   };
 
   return (
-    <PayPalScriptProvider options={{ "client-id": process.env.PAYPAL_CLIENT_ID }}>
+    <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
       <Router>
         <div className="App">
           <Routes> {/* Replace Switch with Routes */}
