@@ -12,7 +12,7 @@ function App() {
   };
 
   return (
-    <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+    <PayPalScriptProvider options={{ "client-id": process.env.PAYPAL_CLIENT_ID }}>
       <Router>
         <div className="App">
           <Routes> {/* Replace Switch with Routes */}
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={
               <>
                 <Typography variant="h5" align="center" gutterBottom>
-                  Help Us Bring NECYPAA to the Granite State!
+                  Help Bring NECYPAA to the Granite State!
                 </Typography>
                 <Typography variant="body1" align="center" gutterBottom>
                   Preregister now for NECYPAA, happening in Vermont from January 3rd to 5th, 2025! 
