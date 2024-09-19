@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: 'backend.zip'
           target: '~/'
-          timeout: 120
+          timeout: '120'
 
       - name: Deploy Application on EC2
         uses: appleboy/ssh-action@v0.1.5
