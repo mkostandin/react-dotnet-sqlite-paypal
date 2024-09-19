@@ -10,7 +10,6 @@ import {
   Paper,
   Button,
   useMediaQuery,
-  Typography,
   TablePagination,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
