@@ -43,7 +43,7 @@ jobs:
           SOURCE_DIR: 'build'
 
       - name: Invalidate CloudFront Cache
-        uses: chetan/invalidate-cloudfront-action@v1.0.2
+        uses: chetan/invalidate-cloudfront-action@v2
         with:
           distribution-id: E1G693NSEO5GNU
           paths: '/*'
