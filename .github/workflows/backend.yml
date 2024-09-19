@@ -29,7 +29,8 @@ jobs:
       - name: Archive Application Files
         run: |
           cd backend/publish
-          zip -r ../../backend.zip ./*
+          zip -r backend.zip ./*
+          mv backend.zip ../../
           cd ../../
 
       - name: Copy Files to EC2
