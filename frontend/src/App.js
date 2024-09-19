@@ -23,7 +23,7 @@ function App() {
                   Help Bring NECYPAA to the Granite State!
                 </Typography>
                 <Typography variant="body1" align="center" gutterBottom>
-                  Preregister now for NECYPAA, happening in Vermont from January 3rd to 5th, 2025! 
+                  Preregister now for NECYPAA for only $20, happening in Vermont from January 3rd to 5th, 2025! 
                   By preregistering through the NH Bid, you'll get a $5 discount and help us compete to bring NECYPAA to New Hampshire in 2026.
                 </Typography>
 
